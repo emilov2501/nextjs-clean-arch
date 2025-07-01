@@ -1,3 +1,4 @@
+
 import { HttpInstance } from "@/shared/lib/http";
 
 export type AuthLoginResponse = {

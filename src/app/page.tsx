@@ -1,5 +1,18 @@
+'use client'
+
+import { loginAction } from "./actions/login";
+
 export default function Home() {
+
+
+  const onSubmit = async () => {
+    await loginAction({
+      username: 'emilys',
+      password: 'emilyspass'
+    })
+  }
+
   return (
-    <div>hello world</div>
+    <button onClick={onSubmit}>Login</button>
   );
 }

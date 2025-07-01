@@ -1,6 +1,7 @@
+
 import { AuthService } from "@/service/AuthService"
 
-export class LoginHandle {
+export class LoginFeature {
   constructor (private readonly authService: AuthService) {}
 
   login = async (username: string, password: string) => {

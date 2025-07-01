@@ -1,7 +1,6 @@
 'use client'
-
 import { PropsWithChildren } from "react"
 
-export const AppProvider = ({children}: PropsWithChildren) => {
+export const DiProvider = ({children}: PropsWithChildren) => {
   return children
 }

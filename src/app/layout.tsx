@@ -2,7 +2,7 @@ import 'reflect-metadata'
 
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { AppProvider } from './providers/app-provider';
+import { DiProvider } from './providers/container';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,9 +29,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <AppProvider>
+        <DiProvider>
           {children}
-        </AppProvider>
+        </DiProvider>
       </body>
     </html>
   );

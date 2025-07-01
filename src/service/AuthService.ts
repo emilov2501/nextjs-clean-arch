@@ -1,3 +1,4 @@
+
 import { AuthRepository } from "@/shared/api/v1/auth";
 
 export class AuthService {

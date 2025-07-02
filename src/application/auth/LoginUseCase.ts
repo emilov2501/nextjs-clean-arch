@@ -1,5 +1,5 @@
-import { AuthService } from "@/service/AuthService";
-import { AuthTokensDto, LoginInputDto } from "@/shared/api/auth";
+import { AuthService } from "@/domain/auth/AuthService";
+import { AuthTokensDto, LoginInputDto } from "@/infrastucture/auth";
 import { UseCase } from "@/shared/interfaces/usecase";
 
 export class LoginUseCase implements UseCase<LoginInputDto, AuthTokensDto> {

@@ -1,8 +1,8 @@
 "use server";
 
-import { LoginInputDto, LoginInputSchema } from "@/shared/api/auth";
+import { AppContainer } from "@/core/container";
+import { LoginInputDto, LoginInputSchema } from "@/infrastucture/auth";
 import { actionClient, SessionManager } from "@/shared/lib";
-import { AppContainer } from "../(libs)/di/container";
 
 export const loginAction = actionClient
 	.inputSchema(LoginInputSchema)

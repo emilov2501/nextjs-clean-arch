@@ -1,6 +1,6 @@
 import { HttpInstance } from "@/shared/lib/http/http";
-import { AuthTokensDto, LoginInputDto } from "./dto";
-import { AuthRepository } from "./repository";
+import { AuthTokensDto, LoginInputDto } from "../AuthDto";
+import { AuthRepository } from "../AuthRepository";
 
 class AuthRepositoryImpl implements AuthRepository {
 	constructor(public readonly http: HttpInstance) {}

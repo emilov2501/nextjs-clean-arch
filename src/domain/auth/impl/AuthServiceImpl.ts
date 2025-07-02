@@ -1,4 +1,4 @@
-import { AuthRepository, LoginInputDto } from "@/shared/api/auth";
+import { AuthRepository, LoginInputDto } from "@/infrastucture/auth";
 import { AuthService } from "../AuthService";
 
 export class AuthServiceImpl implements AuthService {

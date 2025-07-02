@@ -1,5 +1,5 @@
 import z from "zod";
-import { LoginInputSchema } from "./schema";
+import { LoginInputSchema } from "./AuthSchema";
 
 export interface AuthTokensDto {
 	accessToken: string;

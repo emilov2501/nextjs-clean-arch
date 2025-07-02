@@ -1,17 +1,24 @@
 "use server";
 
-import { LoginInputSchema } from "@/shared/api/auth";
-import { actionClient } from "@/shared/lib";
+import { LoginInputDto, LoginInputSchema } from "@/shared/api/auth";
+import { actionClient, SessionManager } from "@/shared/lib";
 import { AppContainer } from "../libs/di/container";
 
 export const loginAction = actionClient
 	.inputSchema(LoginInputSchema)
-	.action(async ({ parsedInput: { username, password } }) => {
-		const result = await AppContainer.getInstance().loginUseCase.execute({
-			username,
-			password,
-		});
-		console.log(result);
+	.use<LoginInputDto>(async (props) => {
+		const result = await AppContainer.getInstance().loginUseCase.execute(
+			props.clientInput as LoginInputDto,
+		);
+
+		if (!result || !result.accessToken) {
+			throw new Error("TokenAccessError: No tokens returned");
+		}
+
+		await SessionManager.create(result.accessToken, result.refreshToken);
+		return props.next();
+	})
+	.action(async () => {
 		return {
 			success: true,
 		};

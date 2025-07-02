@@ -32,7 +32,7 @@ export class SessionManager {
 		});
 
 		// Set session cookie
-		cookieStore.set(this.COOKIE_NAME, sessionId, {
+		cookieStore.set(SessionManager.COOKIE_NAME, sessionId, {
 			expires: refreshTokenExpiresAt,
 			httpOnly: true,
 			secure: process.env.NODE_ENV === "production",
@@ -42,14 +42,14 @@ export class SessionManager {
 
 	static async delete(): Promise<void> {
 		const cookieStore = await cookies();
-		cookieStore.delete(this.COOKIE_NAME);
+		cookieStore.delete(SessionManager.COOKIE_NAME);
 	}
 
 	static async update(
 		accessToken: string,
 		refreshToken: string,
 	): Promise<void> {
-		await this.delete();
-		return this.create(accessToken, refreshToken);
+		await SessionManager.delete();
+		return SessionManager.create(accessToken, refreshToken);
 	}
 }

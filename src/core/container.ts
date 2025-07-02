@@ -1,7 +1,8 @@
-import { LoginUseCase } from "@/application/auth/LoginUseCase";
-import { AuthService } from "@/domain/auth/AuthService";
-import { AuthServiceImpl } from "@/domain/auth/impl/AuthServiceImpl";
-import { AuthRepository, AuthRepositoryImpl } from "@/infrastucture/auth";
+import { LoginUseCase } from "@/features/auth/usecase/LoginUseCase";
+import { AuthRepository } from "@/repositories/AuthRepository";
+import { AuthRepositoryImpl } from "@/repositories/impl/AuthRepositoryIml";
+import { AuthService } from "@/services/AuthService";
+import { AuthServiceImpl } from "@/services/impl/AuthServiceImpl";
 import { http } from "@/shared/api/client";
 
 export class AppContainer {

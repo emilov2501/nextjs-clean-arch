@@ -1,4 +1,4 @@
-import { useLogin } from "../api/useLogin";
+import { useLogin } from "./api/useLogin";
 
 export default function LoginForm() {
 	const { login, loading } = useLogin();

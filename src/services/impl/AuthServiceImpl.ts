@@ -1,4 +1,5 @@
-import { AuthRepository, LoginInputDto } from "@/infrastucture/auth";
+import { AuthRepository } from "@/repositories/AuthRepository";
+import { LoginInputDto } from "@/repositories/dtos/AuthDto";
 import { AuthService } from "../AuthService";
 
 export class AuthServiceImpl implements AuthService {

@@ -1,11 +1,12 @@
 "use server";
 
 import { AppContainer } from "@/core/container";
-import { LoginInputDto, LoginInputSchema } from "@/infrastucture/auth";
+import { LoginInputDto } from "@/repositories/dtos/AuthDto";
 import { actionClient, SessionManager } from "@/shared/lib";
+import { loginInputSchema } from "../libs/schema";
 
 export const loginAction = actionClient
-	.inputSchema(LoginInputSchema)
+	.inputSchema(loginInputSchema)
 	.use<LoginInputDto>(async (props) => {
 		console.log(props);
 		const result = await AppContainer.getInstance().loginUseCase.execute(

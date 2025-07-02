@@ -1,10 +1,5 @@
+import { AuthTokensDto, LoginInputDto } from "@/shared/api/auth";
 
-import { AuthRepository } from "@/shared/api/v1/auth";
-
-export class AuthService {
-  constructor (private readonly authRepository: AuthRepository) {}
-
-  login = async (username: string, password: string) => {
-    return await this.authRepository.login(username, password)
-  }
+export interface AuthService {
+	login(params: LoginInputDto): Promise<AuthTokensDto>;
 }

@@ -9,8 +9,10 @@ export class UserRepositoryImpl implements UserRepository {
 
 	async findAll(): Promise<Either<Failure, UserEntity[]>> {
 		try {
-			const data = await this.http.get<UserEntity[]>("/users");
-			const users = data.data.map((user) => plainToInstance(UserEntity, user));
+			const data = await this.http.get<{ users: UserEntity[] }>("/users");
+			const users = data.data.users.map((user) =>
+				plainToInstance(UserEntity, user),
+			);
 			return right(users);
 		} catch {
 			return left(new ServerErrorFailure());

@@ -5,7 +5,7 @@ export const useUsers = () => {
 	const { getUsersUseCase } = useContainer();
 	const { data = [], isLoading } = useQuery({
 		queryKey: ["users"],
-		queryFn: getUsersUseCase.execute,
+		queryFn: () => getUsersUseCase.execute(),
 	});
 
 	return {

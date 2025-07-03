@@ -1,5 +1,5 @@
 import { Either } from "fp-ts/Either";
-import { Failure } from "@/core/failure";
+import { Failure } from "../lib";
 
 export interface IRepository<T> {
 	findAll(): Promise<Either<Failure, T[]>>;

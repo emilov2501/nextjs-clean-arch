@@ -1,6 +1,6 @@
 import { LoginForm } from "@/features/auth";
 
-export default function LoginView() {
+export default async function LoginView() {
 	return (
 		<div className="min-h-screen flex items-center justify-center bg-gray-100">
 			<div className="w-full max-w-sm bg-white p-6 rounded-2xl shadow-md">

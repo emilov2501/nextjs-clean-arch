@@ -1,5 +1,5 @@
-import UserList from "@/features/user/presenter/UserList";
+import { UserList } from "@/features/user";
 
-export default async function DashboardPage() {
+export default async function Page() {
 	return <UserList />;
 }

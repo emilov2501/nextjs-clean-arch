@@ -2,7 +2,7 @@
 
 import { AppContainer } from "@/core/container";
 import { LoginInputDto } from "@/repositories/dtos/AuthDto";
-import { actionClient, SessionManager } from "@/shared/lib";
+import { actionClient, createSession } from "@/shared/lib";
 import { loginInputSchema } from "../libs/schema";
 
 export const loginAction = actionClient
@@ -17,7 +17,7 @@ export const loginAction = actionClient
 			throw new Error("TokenAccessError: No tokens returned");
 		}
 
-		await SessionManager.create(result.accessToken, result.refreshToken);
+		await createSession(result.accessToken, result.refreshToken);
 		return props.next();
 	})
 	.action(async () => {

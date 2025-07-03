@@ -10,7 +10,9 @@ import { AuthServiceImpl } from "@/services/impl/AuthServiceImpl";
 import { UserServiceImpl } from "@/services/impl/UserServiceImpl";
 import { UserService } from "@/services/UserService";
 import { http } from "@/shared/api/client";
+import { registerListeners } from "./registerListeners";
 
+registerListeners()
 export class AppContainer {
 	private static instance: AppContainer;
 

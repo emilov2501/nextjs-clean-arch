@@ -1,4 +1,5 @@
 import { LoginUseCase } from "@/features/auth/usecase/LoginUseCase";
+import { GetUserByIdUseCase } from "@/features/user/usecase/GetUserByIdUseCase";
 import { GetUsersUseCase } from "@/features/user/usecase/GetUsersUseCase";
 import { AuthRepository } from "@/repositories/AuthRepository";
 import { AuthRepositoryImpl } from "@/repositories/impl/AuthRepositoryIml";
@@ -17,8 +18,10 @@ export class AppContainer {
 	private userRepository: UserRepository;
 	private userService: UserService;
 	private authService: AuthService;
+
 	public loginUseCase: LoginUseCase;
 	public getUsersUseCase: GetUsersUseCase;
+	public getUserByIdUseCase: GetUserByIdUseCase;
 
 	private constructor() {
 		// Repositories
@@ -32,6 +35,7 @@ export class AppContainer {
 		// Usecases
 		this.loginUseCase = new LoginUseCase(this.authService);
 		this.getUsersUseCase = new GetUsersUseCase(this.userService);
+		this.getUserByIdUseCase = new GetUserByIdUseCase(this.userService);
 	}
 
 	public static getInstance(): AppContainer {

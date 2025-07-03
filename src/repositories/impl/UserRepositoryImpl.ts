@@ -7,21 +7,6 @@ import { UserRepository } from "../UserRepository";
 export class UserRepositoryImpl implements UserRepository {
 	constructor(private readonly http: HttpInstance) {}
 
-	async findAll(): Promise<Either<Failure, UserEntity[]>> {
-		try {
-			const data = await this.http.get<{ users: UserEntity[] }>("/users");
-			const users = data.data.users.map((user) =>
-				plainToInstance(UserEntity, user),
-			);
-			return right(users);
-		} catch {
-			return left(new ServerErrorFailure());
-		}
-	}
-
-	findById(id: string): Promise<Either<Failure, UserEntity | null>> {
-		throw new Error("Method not implemented.");
-	}
 	create(data: UserEntity): Promise<Either<Failure, UserEntity>> {
 		throw new Error("Method not implemented.");
 	}
@@ -43,5 +28,29 @@ export class UserRepositoryImpl implements UserRepository {
 		filter: Partial<UserEntity>,
 	): Promise<Either<Failure, UserEntity[]>> {
 		throw new Error("Method not implemented.");
+	}
+
+	async findById(id: number): Promise<Either<Failure, UserEntity | null>> {
+		try {
+			const { data } = await this.http.get<UserEntity | null>(`/users/${id}`);
+			if (!data) {
+				return right(null);
+			}
+
+			const user = plainToInstance(UserEntity, data);
+			return right(user);
+		} catch {
+      return left(new ServerErrorFailure());
+		}
+	}
+
+	async findAll(): Promise<Either<Failure, UserEntity[]>> {
+		try {
+			const { data } = await this.http.get<{ users: UserEntity[] }>("/users");
+			const users = data.users.map((user) => plainToInstance(UserEntity, user));
+			return right(users);
+		} catch {
+			return left(new ServerErrorFailure());
+		}
 	}
 }

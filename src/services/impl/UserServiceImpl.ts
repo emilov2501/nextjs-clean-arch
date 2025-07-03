@@ -14,4 +14,15 @@ export class UserServiceImpl implements UserService {
 
 		return [];
 	}
+
+	async getUser(userId: number): Promise<UserEntity | null> {
+    const user = await this.userRepository.findById(userId);
+
+    if (user._tag !== "Right") {
+      console.error(user.left)
+      return null
+    }
+
+    return user.right;
+	}
 }

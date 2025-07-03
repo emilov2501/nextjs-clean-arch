@@ -1,10 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
-import { AppContainer } from "@/core/container";
+import { useContainer } from "@/core/hooks/useContainer";
 
 export const useUsers = () => {
+	const { getUsersUseCase } = useContainer();
 	const { data = [], isLoading } = useQuery({
 		queryKey: ["users"],
-		queryFn: () => AppContainer.getInstance().getUsersUseCase.execute(),
+		queryFn: getUsersUseCase.execute,
 	});
 
 	return {

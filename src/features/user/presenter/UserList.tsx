@@ -1,6 +1,8 @@
+"use client";
+
 import { useUsers } from "./api/useUsers";
 
-export const UserList = () => {
+export default function UserList() {
 	const { users, loading } = useUsers();
 	return (
 		<div className="p-4">
@@ -18,4 +20,4 @@ export const UserList = () => {
 			)}
 		</div>
 	);
-};
+}

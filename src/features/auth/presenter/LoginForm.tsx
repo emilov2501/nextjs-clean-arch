@@ -1,3 +1,5 @@
+"use client";
+
 import { useLogin } from "./api/useLogin";
 
 export default function LoginForm() {

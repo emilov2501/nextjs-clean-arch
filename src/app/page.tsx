@@ -1,7 +1,5 @@
-"use client";
-
 import LoginView from "./(views)/LoginView";
 
-export default function Home() {
+export default async function Home() {
 	return <LoginView />;
 }

@@ -1,7 +1,5 @@
+import UserList from "@/features/user/presenter/UserList";
+
 export default async function DashboardPage() {
-	return (
-		<div>
-			<h1>Dashboard</h1>
-		</div>
-	);
+	return <UserList />;
 }
